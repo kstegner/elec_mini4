@@ -1,4 +1,4 @@
-elec_mini2
+elec_mini4
 ==========
 
-Elecanisms Miniproject 2
+Elecanisms Miniproject 4

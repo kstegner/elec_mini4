@@ -1,0 +1,24 @@
+ISR = interrpt service routine
+--can't accept or return values
+
+void __attribute__((interrupt, auto_psv)) _T1Interrupt(void)
+
+You can find the name of the interrupt term in the .gld file
+
+Interrupts have priority from 0 (none) to 7 (most), default is 4
+IVT = interrupt vector table tells you the order to interrupt priorities
+
+to disable the interrupt
+
+__builtin_disi(number of cycles to executre, max is 16,383)
+char saved_ipl;
+SET_AND_SAVE_CPU_IPL (saved_ipl, 7)
+...
+RESTORE_CPU_IPL(saved_ipl);
+
+REMEMBER: always clear the interrupt flag
+_T1IF = 0;
+you can find this term in the header file for the PIC
+
+We might want to use this by incrementing a "tick value" that measures the movement of the encoder across the "detect change" pins
+Or to measure the back EMF of the motor as we drive it forwards - measure the falling-edge of the PWM
